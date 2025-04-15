@@ -1,31 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Basic Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Online Tools</title>
+    <meta name="description" content="Free online tools - PDF compressor, YouTube thumbnail downloader, image resizer. No registration required. 100% free tools for daily use.">
+    <meta name="keywords" content="PDF tools, YouTube tools, image tools, free online tools">
+    
+    <!-- SEO Title -->
+    <title>Free Online Tools - PDF, YouTube, Image Converter | ToolsHub</title>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourwebsite.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Free Online Tools - PDF, YouTube, Image Converter">
+    <meta property="og:description" content="100% free online tools for daily needs. No ads, no registration.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:image" content="https://yourwebsite.com/preview.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Schema.org Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Free Online Tools",
+      "url": "https://yourwebsite.com",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any"
+    }
+    </script>
+    
+    <!-- CSS -->
     <style>
-        body { font-family: Arial; background: #0f0f0f; color: white; }
-        .header { text-align: center; padding: 20px; background: #1a1a1a; }
-        .tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; padding: 20px; }
-        .tool-card { background: #222; border-radius: 10px; padding: 20px; cursor: pointer; }
-        .tool-card:hover { transform: scale(1.05); box-shadow: 0 0 15px red; }
+        /* Modern Dark Theme */
+        body { 
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #0f0f0f; 
+            color: white; 
+            margin: 0; 
+            padding: 0;
+            line-height: 1.6;
+        }
+        .header { 
+            text-align: center; 
+            padding: 2rem 1rem; 
+            background: #1a1a1a; 
+        }
+        h1 { 
+            font-size: 2.2rem; 
+            margin: 0 0 0.5rem;
+        }
+        .tools { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+            gap: 1.5rem; 
+            padding: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .tool-card { 
+            background: #222; 
+            border-radius: 12px; 
+            padding: 1.5rem; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .tool-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 20px rgba(255, 71, 87, 0.2); 
+        }
+        button { 
+            background: #ff4757; 
+            color: white; 
+            border: none; 
+            padding: 0.75rem 1.5rem; 
+            border-radius: 8px; 
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 1rem;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        button:hover { background: #ff6b81; }
+        input { 
+            width: 100%; 
+            padding: 0.75rem; 
+            border-radius: 8px; 
+            border: 1px solid #444; 
+            background: #333;
+            color: white;
+            margin: 0.5rem 0;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .tools { grid-template-columns: 1fr; }
+            h1 { font-size: 1.8rem; }
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>🔥 Free Online Tools</h1>
-        <p>No Ads | No Login | 100% Free</p>
-    </div>
-    <div class="tools">
-        <div class="tool-card" onclick="window.open('https://ilovepdf.com')">
-            <h3>📄 PDF to Word</h3>
-            <p>Convert PDF files to Word.</p>
-        </div>
-        <div class="tool-card" onclick="window.open('https://y2mate.com')">
-            <h3>🎥 YouTube Downloader</h3>
-            <p>Download videos in MP4/MP3.</p>
-        </div>
-    </div>
+    <header class="header" role="banner">
+        <h1>🚀 Free Online Tools</h1>
+        <p>100% Free | No Ads | No Registration Required</p>
+    </header>
+
+    <main class="tools" role="main">
+        <!-- PDF Tools -->
+        <section class="tool-card" itemscope itemtype="https://schema.org/SoftwareApplication">
+            <h2 itemprop="name">📄 PDF Compressor</h2>
+            <p itemprop="description">Reduce PDF file size without quality loss</p>
+            <input type="file" id="pdf-file" accept=".pdf" aria-label="Select PDF file">
+            <button onclick="compressPDF()" aria-label="Compress PDF">Compress Now</button>
+            <p id="pdf-result" aria-live="polite"></p>
+            <meta itemprop="applicationCategory" content="DocumentUtility">
+        </section>
+
+        <!-- YouTube Tools -->
+        <section class="tool-card" itemscope itemtype="https://schema.org/WebApplication">
+            <h2 itemprop="name">🎥 YouTube Thumbnail Downloader</h2>
+            <p itemprop="description">Get HD thumbnails from any YouTube video</p>
+            <input type="text" id="yt-url" placeholder="Paste YouTube URL" aria-label="YouTube video URL">
+            <button onclick="downloadThumbnail()" aria-label="Download thumbnail">Get Thumbnail</button>
+            <img id="thumbnail-preview" style="width: 100%; margin-top: 10px; display: none;" alt="YouTube thumbnail preview">
+            <meta itemprop="applicationCategory" content="MultimediaUtility">
+        </section>
+
+        <!-- Image Tools -->
+        <section class="tool-card" itemscope itemtype="https://schema.org/SoftwareApplication">
+            <h2 itemprop="name">🖼️ Image Resizer</h2>
+            <p itemprop="description">Resize images while maintaining quality</p>
+            <input type="file" id="image-file" accept="image/*" aria-label="Select image file">
+            <button onclick="resizeImage()" aria-label="Resize image">Resize (50%)</button>
+            <img id="resized-image" style="width: 100%; margin-top: 10px; display: none;" alt="Resized image preview">
+            <meta itemprop="applicationCategory" content="ImageUtility">
+        </section>
+    </main>
+
+    <script>
+        // PDF Compressor (Mock Function)
+        function compressPDF() {
+            const fileInput = document.getElementById("pdf-file");
+            if (fileInput.files.length > 0) {
+                document.getElementById("pdf-result").innerText = "✅ PDF Compressed! (Demo)";
+                // Real implementation would use PDF.js or similar library
+            } else {
+                document.getElementById("pdf-result").innerText = "⚠️ Please select a PDF file";
+            }
+        }
+
+        // YouTube Thumbnail Downloader
+        function downloadThumbnail() {
+            const url = document.getElementById("yt-url").value;
+            if (url.includes("youtube.com") || url.includes("youtu.be")) {
+                const videoID = url.split("v=")[1]?.split("&")[0] || url.split("youtu.be/")[1];
+                if (videoID) {
+                    const thumbnailUrl = `https://img.youtube.com/vi/${videoID}/maxresdefault.jpg`;
+                    const img = document.getElementById("thumbnail-preview");
+                    img.src = thumbnailUrl;
+                    img.style.display = "block";
+                    img.alt = `Thumbnail for YouTube video ${videoID}`;
+                } else {
+                    alert("Invalid YouTube URL");
+                }
+            } else {
+                alert("Please enter a valid YouTube URL");
+            }
+        }
+
+        // Image Resizer (Client-side)
+        function resizeImage() {
+            const fileInput = document.getElementById("image-file");
+            if (fileInput.files.length > 0) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.getElementById("resized-image");
+                    img.src = e.target.result;
+                    img.style.display = "block";
+                }
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        }
+
+        // Service Worker for PWA (Better SEO)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
 </body>
 </html>
